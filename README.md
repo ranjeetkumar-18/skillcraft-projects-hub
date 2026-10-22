@@ -15,7 +15,7 @@ A sleek, responsive static site that brings together four interactive mini‑app
 ## Live Demo
 - **GitHub Pages:** `https://<your‑username>.github.io/skillcraft-unified-hub/`
 - **Netlify:** `https://<random>.netlify.app/`
-- **Firebase Hosting:** `https://<project‑id>.web.app/`
+
 
 ## Getting Started
 1. Clone the repo.  
