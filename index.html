@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cyber">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SkillCraft Technology Unified Projects Hub featuring an interactive Projects Landing Page, Precision Stopwatch, Tic-Tac-Toe AI Game, and LocalStorage To-Do Web App.">
+  <title>SkillCraft Technology · Unified Projects Hub</title>
+  
+  <!-- Modern Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient Animated Glow Orbs & Grid Canvas -->
+  <div class="ambient-glow orb-1" aria-hidden="true"></div>
+  <div class="ambient-glow orb-2" aria-hidden="true"></div>
+  <div class="ambient-glow orb-3" aria-hidden="true"></div>
+  <div class="grid-overlay" aria-hidden="true"></div>
+
+  <!-- Confetti Canvas for Tic-Tac-Toe Wins -->
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <!-- =========================================
+       TASK 01 - INTERACTIVE RESPONSIVE NAVIGATION
+       ========================================= -->
+  <header id="navbar-header">
+    <div class="container navbar">
+      <a href="#home" class="logo" aria-label="SkillCraft Technology Home">
+        <span class="logo-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+            <polyline points="2 17 12 22 22 17"></polyline>
+            <polyline points="2 12 12 17 22 12"></polyline>
+          </svg>
+        </span>
+        <span class="logo-text">SkillCraft<span class="logo-accent">Technology</span></span>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="nav-container" aria-label="Main Navigation">
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#home" class="nav-item active" data-sec="home">Home</a></li>
+          <li><a href="#stopwatch" class="nav-item" data-sec="stopwatch">Stopwatch</a></li>
+          <li><a href="#tic-tac-toe" class="nav-item" data-sec="tic-tac-toe">Tic-Tac-Toe</a></li>
+          <li><a href="#todo" class="nav-item" data-sec="todo">To-Do List</a></li>
+        </ul>
+      </nav>
+
+      <!-- Theme Switcher & Actions -->
+      <div class="nav-actions">
+        <div class="theme-dropdown-wrapper">
+          <button class="theme-btn" id="theme-menu-btn" aria-label="Change Color Theme" title="Choose color theme">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 2a7 7 0 0 0 0 14v6"></path>
+              <circle cx="12" cy="8" r="2"></circle>
+            </svg>
+            <span class="theme-name" id="current-theme-label">Cyber Neon</span>
+            <svg class="chevron-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          
+          <div class="theme-dropdown" id="theme-dropdown">
+            <button class="theme-option active" data-theme="cyber">
+              <span class="theme-dot dot-cyber"></span>
+              <span>Cyber Neon</span>
+            </button>
+            <button class="theme-option" data-theme="emerald">
+              <span class="theme-dot dot-emerald"></span>
+              <span>Emerald Aurora</span>
+            </button>
+            <button class="theme-option" data-theme="sunset">
+              <span class="theme-dot dot-sunset"></span>
+              <span>Sunset Coral</span>
+            </button>
+            <button class="theme-option" data-theme="ocean">
+              <span class="theme-dot dot-ocean"></span>
+              <span>Electric Azure</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Hamburger Menu Button for Mobile -->
+        <button class="menu-btn" id="menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- =========================================
+         HERO LANDING PAGE (TASK 01)
+         ========================================= -->
+    <section id="home" class="section section-home">
+      <div class="container">
+        <div class="hero-box glass-panel">
+          <div class="badge-wrapper">
+            <span class="badge">
+              <span class="badge-ping"></span>
+              SkillCraft Technology
+            </span>
+          </div>
+
+          <h1 class="hero-title">Unified <span class="gradient-text">Projects Hub</span></h1>
+          
+          <p class="hero-subtitle">
+            A collection of four minimal, elegant, and interactive web tools built with pure HTML, CSS, and JavaScript. Explore each utility using the navigation menu or quick links below.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#stopwatch" class="btn btn-primary" id="hero-btn-stopwatch">
+              <span class="btn-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </span>
+              <span>Stopwatch</span>
+            </a>
+
+            <a href="#tic-tac-toe" class="btn btn-primary" id="hero-btn-ttt">
+              <span class="btn-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="9" y1="3" x2="9" y2="21"></line>
+                  <line x1="15" y1="3" x2="15" y2="21"></line>
+                  <line x1="3" y1="9" x2="21" y2="9"></line>
+                  <line x1="3" y1="15" x2="21" y2="15"></line>
+                </svg>
+              </span>
+              <span>Tic-Tac-Toe</span>
+            </a>
+
+            <a href="#todo" class="btn btn-primary" id="hero-btn-todo">
+              <span class="btn-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+              </span>
+              <span>To-Do List</span>
+            </a>
+          </div>
+
+          <!-- Feature Highlights Pill Bar -->
+          <div class="tech-stack-pills">
+            <span class="tech-pill">⚡ Pure HTML5 & Vanilla JS</span>
+            <span class="tech-pill">🎨 Ultra-Responsive Glass CSS</span>
+            <span class="tech-pill">💾 LocalStorage Sync</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+         TASK 02 - STOPWATCH WEB APPLICATION
+         ========================================= -->
+    <section id="stopwatch" class="section section-app">
+      <div class="container">
+        <div class="section-header">
+          <h2>Stopwatch</h2>
+          <p>A beautiful stopwatch with lap tracking and precision intervals.</p>
+        </div>
+
+        <div class="app-card glass-panel">
+          <div class="stopwatch-wrapper">
+            <!-- Digital Timer Screen -->
+            <div class="stopwatch-screen">
+              <div class="timer-status-indicator">
+                <span class="pulse-dot" id="sw-status-dot"></span>
+                <span class="status-label" id="sw-status-label">Ready</span>
+              </div>
+              <div class="time-display" id="stopwatch-display" aria-live="off">00:00:00.00</div>
+            </div>
+
+            <!-- Control Buttons -->
+            <div class="control-buttons">
+              <button class="btn btn-primary btn-sw" id="stopwatch-start" aria-label="Start stopwatch">
+                <span class="btn-icon" id="sw-start-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
+                </span>
+                <span id="sw-start-text">Start</span>
+              </button>
+
+              <button class="btn btn-outline btn-sw" id="stopwatch-lap" disabled aria-label="Record lap">
+                <span class="btn-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="16"></line>
+                    <line x1="8" y1="12" x2="16" y2="12"></line>
+                  </svg>
+                </span>
+                <span>Lap</span>
+              </button>
+
+              <button class="btn btn-outline btn-sw" id="stopwatch-reset" aria-label="Reset stopwatch">
+                <span class="btn-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+                  </svg>
+                </span>
+                <span>Reset</span>
+              </button>
+            </div>
+
+            <!-- Laps Section -->
+            <div class="lap-section" id="lap-section" style="display: none;">
+              <div class="lap-header-row">
+                <span>Lap #</span>
+                <span>Split</span>
+                <span>Total Time</span>
+              </div>
+              <ul class="lap-list" id="lap-list">
+                <!-- Dynamically populated laps -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+         TASK 03 - TIC-TAC-TOE GAME
+         ========================================= -->
+    <section id="tic-tac-toe" class="section section-app">
+      <div class="container">
+        <div class="section-header">
+          <h2>Tic-Tac-Toe</h2>
+          <p>Play against a friend locally or challenge the computer AI.</p>
+        </div>
+
+        <div class="app-card glass-panel ttt-card">
+          <!-- Game Mode & Difficulty Controls -->
+          <div class="game-controls">
+            <div class="select-wrapper">
+              <select id="game-mode" class="mode-select" aria-label="Select Game Mode">
+                <option value="friend">Player vs Player</option>
+                <option value="ai">Player vs Computer AI</option>
+              </select>
+              <svg class="select-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+
+            <div class="select-wrapper" id="ai-difficulty-wrapper" style="display: none;">
+              <select id="ai-difficulty" class="difficulty-select" aria-label="Select AI Difficulty">
+                <option value="easy">Casual AI (Easy)</option>
+                <option value="hard" selected>Smart AI (Unbeatable)</option>
+              </select>
+              <svg class="select-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+          </div>
+
+          <!-- Scoreboard -->
+          <div class="scoreboard">
+            <div class="score-box score-box-x" id="score-box-x">
+              <span class="score-badge badge-x">X</span>
+              <div class="score-label">Player X</div>
+              <div class="score-value" id="score-x">0</div>
+            </div>
+
+            <div class="score-box score-box-draw">
+              <span class="score-badge badge-draw">−</span>
+              <div class="score-label">Draws</div>
+              <div class="score-value" id="score-draws">0</div>
+            </div>
+
+            <div class="score-box score-box-o" id="score-box-o">
+              <span class="score-badge badge-o">O</span>
+              <div class="score-label" id="player-o-title">Player O</div>
+              <div class="score-value" id="score-o">0</div>
+            </div>
+          </div>
+
+          <!-- Game Status Banner -->
+          <div class="status-banner" id="game-status-banner">
+            <span class="turn-dot"></span>
+            <span class="status-text" id="game-status">Player X's turn</span>
+          </div>
+
+          <!-- 3x3 Game Board Grid -->
+          <div class="game-board" id="game-board" role="grid" aria-label="Tic-Tac-Toe Grid">
+            <button class="cell" data-index="0" role="gridcell" aria-label="Cell 1"></button>
+            <button class="cell" data-index="1" role="gridcell" aria-label="Cell 2"></button>
+            <button class="cell" data-index="2" role="gridcell" aria-label="Cell 3"></button>
+            <button class="cell" data-index="3" role="gridcell" aria-label="Cell 4"></button>
+            <button class="cell" data-index="4" role="gridcell" aria-label="Cell 5"></button>
+            <button class="cell" data-index="5" role="gridcell" aria-label="Cell 6"></button>
+            <button class="cell" data-index="6" role="gridcell" aria-label="Cell 7"></button>
+            <button class="cell" data-index="7" role="gridcell" aria-label="Cell 8"></button>
+            <button class="cell" data-index="8" role="gridcell" aria-label="Cell 9"></button>
+          </div>
+
+          <!-- Game Actions -->
+          <div class="game-actions">
+            <button class="btn btn-outline" id="game-reset" title="Clear board for next round">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path></svg>
+              <span>Reset Board</span>
+            </button>
+            <button class="btn btn-ghost" id="game-reset-scores" title="Reset all match scores">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
+              <span>Reset Scores</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+         TASK 04 - TO-DO WEB APPLICATION
+         ========================================= -->
+    <section id="todo" class="section section-app">
+      <div class="container">
+        <div class="section-header">
+          <h2>To-Do Web App</h2>
+          <p>Stay organized by creating, managing, and setting deadlines for your tasks.</p>
+        </div>
+
+        <div class="app-card glass-panel todo-card">
+          <!-- Add Task Form -->
+          <form class="todo-form" id="todo-form" onsubmit="return false;">
+            <div class="input-group">
+              <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+              <input type="text" class="todo-input" id="todo-title" placeholder="Add a new task..." required autocomplete="off" aria-label="Task title">
+            </div>
+
+            <div class="todo-inputs-row">
+              <div class="input-group datetime-group">
+                <svg class="input-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                <input type="datetime-local" class="todo-date" id="todo-datetime" title="Set due date and time" aria-label="Task due date and time">
+              </div>
+
+              <button class="btn btn-primary" id="add-task-btn" type="submit">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                <span>Add Task</span>
+              </button>
+            </div>
+          </form>
+
+          <!-- Filters & Action Toolbar -->
+          <div class="todo-toolbar">
+            <div class="todo-filters" role="tablist" aria-label="Task Filters">
+              <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">
+                All <span class="filter-count" id="count-all">0</span>
+              </button>
+              <button class="filter-btn" data-filter="active" role="tab" aria-selected="false">
+                Active <span class="filter-count" id="count-active">0</span>
+              </button>
+              <button class="filter-btn" data-filter="completed" role="tab" aria-selected="false">
+                Completed <span class="filter-count" id="count-completed">0</span>
+              </button>
+            </div>
+
+            <button class="clear-btn" id="clear-completed-btn" style="display: none;" title="Remove all completed tasks">
+              Clear Completed
+            </button>
+          </div>
+
+          <!-- Tasks List Container -->
+          <ul class="todo-list" id="todo-list" aria-live="polite">
+            <!-- Dynamically populated tasks -->
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Task Edit Modal -->
+  <div class="modal-overlay" id="edit-modal" style="display: none;" aria-hidden="true">
+    <div class="modal-card glass-panel" role="dialog" aria-modal="true" aria-labelledby="edit-modal-title">
+      <div class="modal-header">
+        <h3 id="edit-modal-title">Edit Task</h3>
+        <button class="modal-close-btn" id="modal-close-btn" aria-label="Close dialog">&times;</button>
+      </div>
+      <form id="edit-task-form" onsubmit="return false;">
+        <div class="input-group modal-input-group">
+          <input type="text" class="todo-input" id="edit-task-title" placeholder="Task title..." required autocomplete="off">
+        </div>
+        <div class="input-group modal-input-group">
+          <input type="datetime-local" class="todo-date" id="edit-task-datetime">
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-outline" id="modal-cancel-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="modal-save-btn">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================
+       FOOTER
+       ========================================= -->
+  <footer>
+    <div class="container footer-content">
+      <p class="footer-copy">&copy; 2026 SkillCraft Technology Internship · Built with HTML5, CSS3 &amp; Modern Vanilla JavaScript.</p>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#stopwatch">Stopwatch</a>
+        <a href="#tic-tac-toe">Tic-Tac-Toe</a>
+        <a href="#todo">To-Do List</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
